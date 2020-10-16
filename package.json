@@ -1,0 +1,27 @@
+{
+  "name": "docz-example-basic",
+  "version": "2.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "docz dev",
+    "build": "docz build",
+    "serve": "docz serve",
+    "eslint": "eslint --ext .jsx,.js src/"
+  },
+  "dependencies": {
+    "docz": "^2.3.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
