@@ -36,7 +36,7 @@ yarn add cz-conventional-changelog -D
   }
 }
 ```
-
+ 
 #### 说明
 
 "build", // 主要目的是修改项目构建系统(例如 gulp，webpack，rollup 的配置等)的提交
