@@ -52,3 +52,92 @@ yarn add cz-conventional-changelog -D
 "test" // 测试
 
 
+### 约定式提交格式校验
+
+#### commitlint校验约定式提交格式
+为了防止出现不满足格式要求的commit message出现，还是需要添加上必要的格式校验.使用commitlint
+
+安装
+```shell
+yarn add @commitlint/config-conventional @commitlint/cli -D
+
+```
+
+根添加配置文件commitlint.config.js
+```js
+// commitlint.config.js
+module.exports = {
+  extends: ['@commitlint/config-conventional']
+}
+```
+
+#### husky配置git hooks
+
+有了git hooks我们可以做很多提交之前的验证。
+
+安装
+```shell
+yarn add husky -D
+```
+
+package.json 配置
+```json
+{
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS", // 配合commitlint使用
+      // "pre-commit": "lint-staged" // 配置lint-staged
+    }
+  }
+}
+```
+
+
+#### lint-staged配置
+
+list-staged主要配合linter用来格式化代码（统一的代码风格），这部是可选的。是用来让格式化工具只lint需要提交的文件，其它文件忽略，这样能够提高效率。
+
+安装
+```shell
+yarn add lint-staged -D
+```
+
+package.json 配置
+```json
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged" 
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,css,vue,tsx,jsx}": [
+        //"vue-cli-service lint", 配合vue使用
+        "eslint",
+        "git add"
+    ]
+  }
+}
+```
+
+### 自动生成changelog
+自动生成changelog是建立在约定式提交的基础上。standard-version做了自动打tag，自动生成changelog等过程.
+
+
+standard-version配置
+```shell
+yarn add standard-version -D
+```
+
+package.json配置
+```json
+{
+  "scripts": {
+    "release": "standard-version",
+    "release:first": "standard-version -r 1.0.0"
+  },
+  // standard-version 好多配置看官方文档（可选）
+  "standard-version": {}
+}
+```
+
